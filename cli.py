@@ -17,10 +17,7 @@ class CliHelper:
 		return self.path
 
 	def path_is_valid(self):
-		try:
-			if os.path.exists(self.path_getter()):
-				return True
-		except FileNotFoundError:
+		if os.path.exists(self.path_getter()):
+			return True
+		else:
 			sys.exit("invalid path")
-
-		return False
