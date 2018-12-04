@@ -17,8 +17,7 @@ class OpenFiles:
 		return files_name
 
 	def opened_files(self):
-		py_files_list = self.find_py_files()
-		for file in py_files_list:
+		for file in self.find_py_files():
 			with open(file, 'r') as opened_file:
 				for line in opened_file:
 					yield line
@@ -62,12 +61,22 @@ class ModuleOrLibrary(GetModulesAndLibrariesNames):
 		libraries_name = []
 		for every_import in self.concat_names():
 			if every_import in os.listdir(self.input_cli.path_getter()):
-				modules_name.append(every_import)
+				modules_name.append(every_import.replace('.py', ''))
 			else:
-				libraries_name.append(every_import)
+				libraries_name.append(every_import.replace('.py', ''))
 
-		return modules_name, libraries_name
+		return [modules_name, libraries_name]
 
-class UsedImported:
+# main.py
 
-	def 
+
+class UsedImported(ModuleOrLibrary, OpenFiles):
+
+	def which_lib_is_used(self):
+		used_libs = set()
+		all_libs = self.check_if_module_or_library()[1]
+		for lib in all_libs:
+			for file in self.opened_files():
+				if str(lib+'.') in file:
+					used_libs.add(lib)
+		return used_libs
