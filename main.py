@@ -5,20 +5,19 @@ from contextlib import closing
 import itertools
 
 
-class OpenFiles:
-	input_cli = CliHelper()
+class OpenFiles(CliHelper):
 
 	def find_py_files(self):
 		files_name = []
-		if self.input_cli.path_is_valid():
-			for filename in os.listdir(self.input_cli.path_getter()):
+		if self.path_is_valid():
+			for filename in os.listdir(self.path_getter()):
 				if filename.endswith(".py"):
 					files_name.append(filename)
 		return files_name
 
 	def opened_files(self):
 		for file in self.find_py_files():
-			with open(file, 'r') as opened_file:
+			with open(self.path_getter()+'/'+file, 'r') as opened_file:
 				for line in opened_file:
 					yield line
 
@@ -60,14 +59,12 @@ class ModuleOrLibrary(GetModulesAndLibrariesNames):
 		modules_name = []
 		libraries_name = []
 		for every_import in self.concat_names():
-			if every_import in os.listdir(self.input_cli.path_getter()):
+			if every_import in os.listdir(self.path_getter()):
 				modules_name.append(every_import.replace('.py', ''))
 			else:
 				libraries_name.append(every_import.replace('.py', ''))
 
 		return [modules_name, libraries_name]
-
-# main.py
 
 
 class UsedImported(ModuleOrLibrary, OpenFiles):
