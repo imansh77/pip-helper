@@ -1,4 +1,5 @@
 from cli import CliHelper
+import cli
 import os, sys
 # import sys
 from contextlib import closing
@@ -41,7 +42,7 @@ class GetModulesAndLibrariesNames(OpenFiles):
 				names_list = every_import.split('import ')[1].split(', ')
 				module_and_lib_names.append(names_list)
 			elif every_import.startswith('from'):
-				names_list = [every_import.split('from ')[1].split()[0]]
+				names_list = [every_import.split('from ')[1].split('.')[0]]
 				module_and_lib_names.append(names_list)
 		convert_to_flat = list(itertools.chain.from_iterable(module_and_lib_names))
 		module_and_lib_names = set(convert_to_flat)
@@ -77,3 +78,12 @@ class UsedImported(ModuleOrLibrary, OpenFiles):
 				if str(lib+'.') in file:
 					used_libs.add(lib)
 		return used_libs
+
+	def which_module_is_used(self):
+		used_modules = set()
+		all_modules = self.check_if_module_or_library()[0]
+		for module in all_modules:
+			for file in self.opened_files():
+				if str(module+'.') in file:
+					used_modules.add(module)
+		return used_modules
