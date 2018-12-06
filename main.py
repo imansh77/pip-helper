@@ -1,7 +1,6 @@
 from cli import CliHelper
-import cli
-import os, sys
-# import sys
+import os
+import sys
 from contextlib import closing
 import itertools
 
@@ -42,8 +41,9 @@ class GetModulesAndLibrariesNames(OpenFiles):
 				names_list = every_import.split('import ')[1].split(', ')
 				module_and_lib_names.append(names_list)
 			elif every_import.startswith('from'):
-				names_list = [every_import.split('from ')[1].split('.')[0]]
+				names_list = [every_import.split('from ')[1].split('import')[0].replace(' ', '')]
 				module_and_lib_names.append(names_list)
+
 		convert_to_flat = list(itertools.chain.from_iterable(module_and_lib_names))
 		module_and_lib_names = set(convert_to_flat)
 
@@ -70,20 +70,17 @@ class ModuleOrLibrary(GetModulesAndLibrariesNames):
 
 class UsedImported(ModuleOrLibrary, OpenFiles):
 
-	def which_lib_is_used(self):
-		used_libs = set()
-		all_libs = self.check_if_module_or_library()[1]
-		for lib in all_libs:
+	def lib_or_module(self, i):
+		used_ones = set()
+		all_libs_and_modules = self.check_if_module_or_library()[i]
+		for lib_or_module in all_libs_and_modules:
 			for file in self.opened_files():
-				if str(lib+'.') in file:
-					used_libs.add(lib)
-		return used_libs
+				if str(lib_or_module + '.') in file:
+					used_ones.add(lib_or_module)
+		return used_ones
+
+	def which_lib_is_used(self):
+		return self.lib_or_module(i=1)
 
 	def which_module_is_used(self):
-		used_modules = set()
-		all_modules = self.check_if_module_or_library()[0]
-		for module in all_modules:
-			for file in self.opened_files():
-				if str(module+'.') in file:
-					used_modules.add(module)
-		return used_modules
+		return self.lib_or_module(i=0)
