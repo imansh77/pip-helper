@@ -1,10 +1,8 @@
 from cli import CliHelper
+
 import os
 import sys
-from contextlib import closing
-import contextlib
 import itertools
-import re
 
 
 class OpenFiles(CliHelper):
@@ -81,14 +79,11 @@ class UsedImported(ModuleOrLibrary, OpenFiles):
 		before = self.module_and_lib_set()[2]
 		after = self.module_and_lib_set()[1]
 		used_ones = set([i for line in self.opened_files() for i in all_libs_or_modules if i+'.' in line])
-		print(before)
-		print(after)
-
 		for line in self.opened_files():
-			for j in after:
-				if (j + '.') in line and not "#" in line:
-					print(after.index(j))
-					used_ones.add(before[after.index(j)])
+			for after_import in after:
+				if after_import + '.' in line and "#" not in line:
+					if before[after.index(after_import)] in all_libs_or_modules:
+						used_ones.add(before[after.index(after_import)])
 		return used_ones
 
 	def which_lib_is_used(self):
@@ -96,6 +91,3 @@ class UsedImported(ModuleOrLibrary, OpenFiles):
 
 	def which_module_is_used(self):
 		return self.lib_or_module(i=0)
-
-	def clo(self):
-		return CliHelper.mro
