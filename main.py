@@ -91,3 +91,14 @@ class UsedImported(ModuleOrLibrary, OpenFiles):
 
 	def which_module_is_used(self):
 		return self.lib_or_module(i=0)
+
+
+class TxtFile(UsedImported):
+
+	def requirements_maker(self):
+		with open('requirements.txt', 'w') as file:
+			for used_imports in self.which_lib_is_used():
+				file.write(used_imports+'\n')
+
+
+TxtFile().requirements_maker()
