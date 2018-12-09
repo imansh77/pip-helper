@@ -8,7 +8,8 @@ So how to use it :
 2. cd to your pip-helper project where main.py exists 
 3. In terminal type : \
 `python main.py` + your project path which has python files \
-for example: \
-`python main.py /Imansh/Github/pip-helper`
-
+for example: 
+~~~posh
+python main.py /Imansh/Github/pip-helper
+~~~
 The result will be in a `requirements.txt` in the pip-helper path.
