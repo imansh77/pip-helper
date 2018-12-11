@@ -7,10 +7,16 @@ import itertools
 
 class OpenFiles(CliHelper):
 
+	def all_files(self):
+		all_files = []
+		for dirpath, dirnames, filenames in os.walk(self.path_getter()):
+			all_files.extend(filenames)
+		return all_files
+
 	def find_py_files(self):
 		files_name = []
 		if self.path_is_valid():
-			for filename in os.listdir(self.path_getter()):
+			for filename in self.all_files():
 				if filename.endswith(".py"):
 					files_name.append(filename)
 		return files_name
@@ -74,6 +80,12 @@ class ModuleOrLibrary(GetModulesAndLibrariesNames):
 
 class UsedImported(ModuleOrLibrary, OpenFiles):
 
+	def which_lib_is_used(self):
+		return self.lib_or_module(i=1)
+
+	def which_module_is_used(self):
+		return self.lib_or_module(i=0)
+
 	def lib_or_module(self, i):
 		all_libs_or_modules = self.check_if_module_or_library()[i]
 		before = self.module_and_lib_set()[2]
@@ -85,12 +97,6 @@ class UsedImported(ModuleOrLibrary, OpenFiles):
 					if before[after.index(after_import)] in all_libs_or_modules:
 						used_ones.add(before[after.index(after_import)])
 		return used_ones
-
-	def which_lib_is_used(self):
-		return self.lib_or_module(i=1)
-
-	def which_module_is_used(self):
-		return self.lib_or_module(i=0)
 
 
 class TxtFile(UsedImported):
