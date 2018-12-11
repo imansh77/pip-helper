@@ -7,23 +7,14 @@ import itertools
 
 class OpenFiles(CliHelper):
 
-	def all_files(self):
-		all_files = []
+	def py_files(self):
 		for dirpath, dirnames, filenames in os.walk(self.path_getter()):
-			all_files.extend(filenames)
-		return all_files
-
-	def find_py_files(self):
-		files_name = []
-		if self.path_is_valid():
-			for filename in self.all_files():
-				if filename.endswith(".py"):
-					files_name.append(filename)
-		return files_name
+			for filename in [i for i in filenames if i.endswith(".py")]:
+				yield(os.path.join(dirpath, filename))
 
 	def opened_files(self):
-		for file in self.find_py_files():
-			with open(self.path_getter()+'/'+file, 'r') as opened_file:
+		for file in self.py_files():
+			with open(file, 'r') as opened_file:
 				for line in opened_file:
 					yield line
 
