@@ -12,6 +12,7 @@ class OpenFiles(CliHelper):
 		for i in os.listdir(self.path_getter()):
 			if i.endswith(".py"):
 				py_files += 1
+				break
 		if py_files > 0:
 			return True
 		else:
@@ -99,6 +100,11 @@ class UsedImported(ModuleOrLibrary, OpenFiles):
 					if before[after.index(after_import)] in all_libs_or_modules:
 						used_ones.add(before[after.index(after_import)])
 		return used_ones
+
+
+# class SeparationWithBuiltin:
+#
+# 	def
 
 
 class TxtFile(UsedImported):
