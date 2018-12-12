@@ -7,10 +7,21 @@ import itertools
 
 class OpenFiles(CliHelper):
 
+	def if_any_py_file(self):
+		py_files = 0
+		for i in os.listdir(self.path_getter()):
+			if i.endswith(".py"):
+				py_files += 1
+		if py_files > 0:
+			return True
+		else:
+			sys.exit("There is no py file in this path")
+
 	def py_files(self):
-		for dirpath, dirnames, filenames in os.walk(self.path_getter()):
-			for filename in [i for i in filenames if i.endswith(".py")]:
-				yield(os.path.join(dirpath, filename))
+		if self.if_any_py_file():
+			for dirpath, dirnames, filenames in os.walk(self.path_getter()):
+				for filename in [i for i in filenames if i.endswith(".py")]:
+					yield(os.path.join(dirpath, filename))
 
 	def opened_files(self):
 		for file in self.py_files():
