@@ -10,22 +10,33 @@ class PathHelper:
 	def __init__(self):
 		self.path = None
 
-	def path_getter(self):
-		if len(config.project_path) > 0:
-			self.path = config.project_path
+	def project_path(self):
+		return self.both_path(which_path=config.project_path)
+
+	def project_virtualenv_path(self):
+		return self.both_path(which_path=config.project_virtualenv_path)
+
+	def both_path(self, which_path):
+		if (len(which_path)) > 0:
+			self.path = which_path
 			return self.path
 		else:
-			sys.exit("please enter a path")
+			sys.exit("please provide both project_path & project_virtualenv_path in config.py")
 
-	def path_is_valid(self):
-		if os.path.exists(self.path_getter()):
-			return self.path_getter()
+	@staticmethod
+	def path_is_valid(which_path):
+		if os.path.exists(which_path):
+			return True
 		else:
 			sys.exit("invalid path")
 
+	def path_returner(self, which_path):
+		if self.path_is_valid(which_path=which_path):
+			return which_path
+
 	def if_any_py_file(self):
 		py_files = 0
-		for i in os.listdir(self.path_is_valid()):
+		for i in os.listdir(self.path_returner(self.project_path())):
 			if i.endswith(".py"):
 				py_files += 1
 				break

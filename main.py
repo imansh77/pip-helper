@@ -9,7 +9,7 @@ class OpenFiles(PathHelper):
 
 	def py_files(self):
 		if self.if_any_py_file():
-			for dirpath, dirnames, filenames in os.walk(self.path_getter()):
+			for dirpath, dirnames, filenames in os.walk(self.path_returner(self.project_path())):
 				for filename in [i for i in filenames if i.endswith(".py")]:
 					yield(os.path.join(dirpath, filename))
 
@@ -63,7 +63,7 @@ class ModuleOrLibrary(GetModulesAndLibrariesNames):
 		modules_name = []
 		libraries_name = []
 		for every_import in self.concat_names():
-			if every_import in os.listdir(self.path_getter()):
+			if every_import in os.listdir(self.path_returner(self.project_path())):
 				modules_name.append(every_import.replace('.py', ''))
 			else:
 				libraries_name.append(every_import.replace('.py', ''))

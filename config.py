@@ -4,4 +4,4 @@ for project_virtualenv_path -> path of virtual environment that you have set for
 """
 
 project_path = '/Coding/GitHub/pip-helper/pip-helper'
-project_virtualenv_path = ''
+project_virtualenv_path = '/Coding/GitHub/pip-helper/pipenv'
