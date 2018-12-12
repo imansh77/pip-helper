@@ -1,22 +1,11 @@
-from cli import CliHelper
+from path_helper import PathHelper
 
 import os
 import sys
 import itertools
 
 
-class OpenFiles(CliHelper):
-
-	def if_any_py_file(self):
-		py_files = 0
-		for i in os.listdir(self.path_getter()):
-			if i.endswith(".py"):
-				py_files += 1
-				break
-		if py_files > 0:
-			return True
-		else:
-			sys.exit("There is no py file in this path")
+class OpenFiles(PathHelper):
 
 	def py_files(self):
 		if self.if_any_py_file():
