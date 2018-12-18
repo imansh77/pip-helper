@@ -3,11 +3,9 @@
 
 How to use it :
 1. Clone the project 
-2. cd to your pip-helper project where main.py exists 
+2. Cd to your pip-helper project where main.py exists
+3. Open config.py and put your project path & path of virtual env you used for this your project like the example 
 3. In terminal type : \
-`python main.py` + your project path which has python files \
-for example: 
-~~~posh
-python main.py /Imansh/Github/pip-helper
-~~~
+`python main.py`
+
 The result will be in a `requirements.txt` in the pip-helper directory.
