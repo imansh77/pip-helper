@@ -1,7 +1,6 @@
-from main import OpenFiles
+from main import OpenFiles, ModuleOrLibrary, UsedImported, GetModulesAndLibrariesNames, SeparationWithBuiltin
+import unittest
 
-
-cd = OpenFiles()
-ff = cd.has_import()
-
-# print(ff)
+f = SeparationWithBuiltin()
+c = f.used_installed_packages()
+print(c)

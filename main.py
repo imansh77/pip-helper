@@ -1,25 +1,15 @@
-from cli import CliHelper
+from path_helper import PathHelper
 
 import os
 import sys
 import itertools
 
 
-class OpenFiles(CliHelper):
-
-	def if_any_py_file(self):
-		py_files = 0
-		for i in os.listdir(self.path_getter()):
-			if i.endswith(".py"):
-				py_files += 1
-		if py_files > 0:
-			return True
-		else:
-			sys.exit("There is no py file in this path")
+class OpenFiles(PathHelper):
 
 	def py_files(self):
 		if self.if_any_py_file():
-			for dirpath, dirnames, filenames in os.walk(self.path_getter()):
+			for dirpath, dirnames, filenames in os.walk(self.path_returner(self.project_path())):
 				for filename in [i for i in filenames if i.endswith(".py")]:
 					yield(os.path.join(dirpath, filename))
 
@@ -73,7 +63,7 @@ class ModuleOrLibrary(GetModulesAndLibrariesNames):
 		modules_name = []
 		libraries_name = []
 		for every_import in self.concat_names():
-			if every_import in os.listdir(self.path_getter()):
+			if every_import in os.listdir(self.path_returner(self.project_path())):
 				modules_name.append(every_import.replace('.py', ''))
 			else:
 				libraries_name.append(every_import.replace('.py', ''))
@@ -101,12 +91,22 @@ class UsedImported(ModuleOrLibrary, OpenFiles):
 		return used_ones
 
 
-class TxtFile(UsedImported):
+class SeparationWithBuiltin(UsedImported):
+
+	def installed_packages(self):
+		return os.listdir(self.path_returner(self.project_virtualenv_path()))
+
+	def used_installed_packages(self):
+		installed_packs = [i for i in self.which_lib_is_used() if i in self.installed_packages()]
+		return installed_packs
+
+
+class TxtFile(SeparationWithBuiltin):
 
 	def requirements_maker(self):
 		with open('requirements.txt', 'w') as file:
-			for used_imports in self.which_lib_is_used():
-				file.write(used_imports+'\n')
+			for used_installed in self.used_installed_packages():
+				file.write(used_installed+'\n')
 
 
 TxtFile().requirements_maker()
