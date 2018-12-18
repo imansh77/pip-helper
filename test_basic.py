@@ -1,6 +1,6 @@
-from main import OpenFiles, ModuleOrLibrary, UsedImported, GetModulesAndLibrariesNames, TxtFile
+from main import OpenFiles, ModuleOrLibrary, UsedImported, GetModulesAndLibrariesNames, SeparationWithBuiltin
 import unittest
 
-f = OpenFiles()
-c = f.if_any_py_file()
+f = SeparationWithBuiltin()
+c = f.used_installed_packages()
 print(c)

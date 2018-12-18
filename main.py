@@ -91,17 +91,22 @@ class UsedImported(ModuleOrLibrary, OpenFiles):
 		return used_ones
 
 
-# class SeparationWithBuiltin:
-#
-# 	def
+class SeparationWithBuiltin(UsedImported):
+
+	def installed_packages(self):
+		return os.listdir(self.path_returner(self.project_virtualenv_path()))
+
+	def used_installed_packages(self):
+		installed_packs = [i for i in self.which_lib_is_used() if i in self.installed_packages()]
+		return installed_packs
 
 
-class TxtFile(UsedImported):
+class TxtFile(SeparationWithBuiltin):
 
 	def requirements_maker(self):
 		with open('requirements.txt', 'w') as file:
-			for used_imports in self.which_lib_is_used():
-				file.write(used_imports+'\n')
+			for used_installed in self.used_installed_packages():
+				file.write(used_installed+'\n')
 
 
 TxtFile().requirements_maker()
