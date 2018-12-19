@@ -43,7 +43,7 @@ class TestPathHelper(unittest.TestCase, TxtFile):
 	def test_import_getter(self):
 		for i in self.import_getter():
 			if 'import ' not in i:
-				self.assertIn(self.nmd, i)
+				self.assertIn('import ', i)
 
 	def test_module_and_lib_set(self):
 		self.assertIn('os', list(self.module_and_lib_set()[0]))

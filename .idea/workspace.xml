@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfb93ebe-b9bf-4403-8a26-0251d5788a33" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_files.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +44,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="433">
@@ -57,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test_basic.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_files.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+            <state relative-caret-position="476">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -156,7 +155,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_basic.TestPathHelper.test_py_files">
+  <component name="RunManager" selected="Python tests.Unittests for test_files.TestPathHelper.test_py_files">
     <configuration name="Unnamed" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="pip-helper" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -179,7 +178,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_basic.TestPathHelper.test_if_any_py_files" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_files.TestPathHelper.test_if_any_py_files" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="pip-helper" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -190,11 +189,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_basic.TestPathHelper.test_if_any_py_files&quot;" />
+      <option name="_new_target" value="&quot;test_files.TestPathHelper.test_if_any_py_files&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_basic.TestPathHelper.test_py_files" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_files.TestPathHelper.test_py_files" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="pip-helper" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -205,11 +204,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_basic.TestPathHelper.test_py_files&quot;" />
+      <option name="_new_target" value="&quot;test_files.TestPathHelper.test_py_files&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests in test_basic.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests in test_files.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="pip-helper" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -220,15 +219,15 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_basic.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_files.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_basic.TestPathHelper.test_py_files" />
-        <item itemvalue="Python tests.Unittests in test_basic.py" />
-        <item itemvalue="Python tests.Unittests for test_basic.TestPathHelper.test_if_any_py_files" />
+        <item itemvalue="Python tests.Unittests for test_files.TestPathHelper.test_py_files" />
+        <item itemvalue="Python tests.Unittests in test_files.py" />
+        <item itemvalue="Python tests.Unittests for test_files.TestPathHelper.test_if_any_py_files" />
       </list>
     </recent_temporary>
   </component>
@@ -249,7 +248,7 @@
       <workItem from="1544792673075" duration="244000" />
       <workItem from="1544793305547" duration="1206000" />
       <workItem from="1545059661666" duration="25000" />
-      <workItem from="1545059717812" duration="25522000" />
+      <workItem from="1545059717812" duration="26466000" />
     </task>
     <servers />
   </component>
@@ -271,16 +270,16 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180071000" />
+    <option name="totallyTimeSpent" value="181015000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.25274727" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.25274727" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32959184" />
+      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32959184" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.32959184" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32959184" />
       <window_info anchor="bottom" id="Messages" order="4" />
@@ -414,22 +413,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test_files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
           <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_basic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
