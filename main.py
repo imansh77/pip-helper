@@ -3,6 +3,10 @@ from path_helper import PathHelper
 import os
 import sys
 import itertools
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 class OpenFiles(PathHelper):
@@ -29,7 +33,8 @@ class GetModulesAndLibrariesNames(OpenFiles):
 				if 'import ' in line:
 					unique_lines.add(line.replace('\n', '').replace('\t', ''))
 			except:
-				sys.exit('there is no library or module imported in this directory')
+				logger.error('there is no library or module imported in this directory')
+				sys.exit(0)
 		return unique_lines
 
 	def module_and_lib_set(self):
@@ -107,6 +112,7 @@ class TxtFile(SeparationWithBuiltin):
 		with open('requirements.txt', 'w') as file:
 			for used_installed in self.used_installed_packages():
 				file.write(used_installed+'\n')
+		logger.info('files are added to the requirements.txt')
 
 
 TxtFile().requirements_maker()

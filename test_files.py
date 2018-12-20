@@ -9,7 +9,7 @@ class TestPathHelper(unittest.TestCase, TxtFile):
 		self.path = '/Coding/GitHub/todo'
 		self.test_for_expected_output = '/Coding/GitHub/pip-helper/pip-helper/path_helper.py'
 		self.line_example = 'TxtFile().requirements_maker()\n'
-		self.used_libs = {'sys', 'unittest', 'itertools', 'os'}
+		self.used_libs = {'sys', 'unittest', 'itertools', 'os', 'logging'}
 		self.used_mods = {'path_helper', 'config'}
 		self.example_used_installed_packages = []
 		self.config_path = config.project_path

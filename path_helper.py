@@ -2,6 +2,12 @@ import config
 
 import os
 import sys
+import logging
+
+logging.basicConfig(
+	filename='log.log', level=logging.INFO, format='%(levelname)s [%(asctime)s] %(message)s')
+logger = logging.getLogger(__name__)
+logging.getLogger().addHandler(logging.StreamHandler())
 
 
 class PathHelper:
@@ -21,14 +27,16 @@ class PathHelper:
 			self.path = which_path
 			return self.path
 		else:
-			sys.exit("please provide both project_path & project_virtualenv_path in config.py")
+			logging.error("please provide both project_path & project_virtualenv_path in config.py")
+			sys.exit(0)
 
 	@staticmethod
 	def path_is_valid(which_path):
 		if os.path.exists(which_path):
 			return True
 		else:
-			sys.exit("invalid path")
+			logger.error("invalid path")
+			sys.exit(0)
 
 	def path_returner(self, which_path):
 		if self.path_is_valid(which_path=which_path):
@@ -43,4 +51,5 @@ class PathHelper:
 		if py_files > 0:
 			return True
 		else:
-			sys.exit("There is no py file in this path")
+			logger.error("There is no py file in this path")
+			sys.exit(0)
