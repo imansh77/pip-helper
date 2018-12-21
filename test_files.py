@@ -66,8 +66,8 @@ class TestPathHelper(unittest.TestCase, TxtFile):
 		self.assertEqual(self.used_mods, self.which_module_is_used())
 
 	def test_lib_or_module(self):
-		self.assertEqual(self.used_mods, self.lib_or_module(i=0))
-		self.assertEqual(self.used_libs, self.lib_or_module(i=1))
+		self.assertEqual(self.used_mods, self.lib_or_module(i=0)[0])
+		self.assertEqual(self.used_libs, self.lib_or_module(i=1)[0])
 
 	def test_installed_packages(self):
 		self.assertIn('requests', self.installed_packages())
