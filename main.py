@@ -77,12 +77,11 @@ class ModuleOrLibrary(GetModulesAndLibrariesNames):
 
 class UsedImported(ModuleOrLibrary, OpenFiles):
 
-
 	def which_lib_is_used(self):
-		return self.lib_or_module(i=1)[0]
+		return self.lib_or_module(i=1)
 
 	def which_module_is_used(self):
-		return self.lib_or_module(i=0)[0]
+		return self.lib_or_module(i=0)
 
 	def lib_or_module(self, i):
 		all_libs_or_modules = self.check_if_module_or_library()[i]
@@ -95,8 +94,7 @@ class UsedImported(ModuleOrLibrary, OpenFiles):
 				if after_import + '.' in line and "#" not in line:
 					if before[after.index(after_import)] in all_libs_or_modules:
 						used_ones.add(before[after.index(after_import)])
-		not_used = (set(all_libs_or_modules) - used_ones)
-		return used_ones, not_used
+		return used_ones
 
 
 class SeparationWithBuiltin(UsedImported):
@@ -116,11 +114,6 @@ class TxtFile(SeparationWithBuiltin):
 			for used_installed in self.used_installed_packages():
 				file.write(used_installed+'\n')
 		logger.info('files are added to the requirements.txt')
-
-
-class UnusedImported(TxtFile):
-
-		pass
 
 
 TxtFile().requirements_maker()
