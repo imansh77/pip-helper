@@ -1,5 +1,5 @@
 # pip-helper
-**Identify libraries which you installed with omitting those you didn't use in order to have a nice and neat requirements file**
+** Identify libraries which you installed and used in your project in order to have a nice and neat requirements file**
 
 How to use it :
 1. Clone the project 
